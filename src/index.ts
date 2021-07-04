@@ -159,6 +159,7 @@ testChromeInstallation()
     })
     .then(() => {
         const initSession = process.env.INIT_SESSION
+        log.debug(`Init session: ${initSession}`)
         if (initSession) {
             return sessions.create(initSession, {})
         }
