@@ -145,6 +145,11 @@ function validateIncomingRequest(ctx: RequestContext, params: BaseAPICall) {
         return false
     }
 
+    if (params.password !== process.env.FLARE_PASS) {
+        ctx.errorResponse("Invalid password")
+        return false
+    }
+
     return true
 }
 

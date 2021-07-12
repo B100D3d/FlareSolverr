@@ -8,6 +8,7 @@ services:
       - LOG_LEVEL=${LOG_LEVEL:-debug}
       - LOG_HTML=${LOG_HTML:-false}
       - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - FLARE_PASS=${FLARE_PASS}
       - TZ=Europe/Moscow
       - INIT_SESSION=MinerSession
     ports:

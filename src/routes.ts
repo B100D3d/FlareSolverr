@@ -17,6 +17,7 @@ import cloudflareProvider from "./providers/cloudflare"
 
 export interface BaseAPICall {
     cmd: string
+    password: string
 }
 
 interface BaseSessionsAPICall extends BaseAPICall {
