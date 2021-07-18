@@ -345,6 +345,9 @@ export const routes: Routes = {
 
         await browserRequest(ctx, params)
     },
+    "process.exit": async () => {
+        process.exit(0)
+    },
 }
 
 export default async function Router(
