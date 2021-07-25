@@ -37,7 +37,8 @@ export default async function resolveChallenge(
     while (status !== 200) {
         log.info(`${url} response status = ${status}, wait for navigation`)
         response = await page.waitForNavigation()
-        status = response.status()
+        status = response?.status()
+        log.info(`${response?.url()} url after navigation, status = ${status}`)
     }
     log.info(`${url} response status = ${status}, return result`)
 
