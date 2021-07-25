@@ -38,11 +38,16 @@ export default async function resolveChallenge(
         if (!page || page?.isClosed()) {
             throw new Error(`${url} No page or page is closed`)
         }
+        log.info(`${url} | response status = ${status} | wait for navigation`)
 
-        log.info(`${url} response status = ${status}, wait for navigation`)
-        await page.waitFor(1000)
+        response = await page.waitForNavigation({
+            waitUntil: "domcontentloaded",
+        })
         status = response?.status()
-        log.info(`${response?.url()} url after navigation, status = ${status}`)
+
+        log.info(
+            `${url} | after navigation: ${response?.url()} url, status = ${status}`
+        )
     }
     log.info(`${url} response status = ${status}, return result`)
 
