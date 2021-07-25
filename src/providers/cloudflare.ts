@@ -40,7 +40,7 @@ export default async function resolveChallenge(
         }
 
         log.info(`${url} response status = ${status}, wait for navigation`)
-        await page?.waitForTimeout(1000)
+        await page.waitFor(1000)
         status = response?.status()
         log.info(`${response?.url()} url after navigation, status = ${status}`)
     }
