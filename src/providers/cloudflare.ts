@@ -35,10 +35,11 @@ export default async function resolveChallenge(
     }
     let status = response.status()
     while (status !== 200) {
-        log.info(`Response status is ${status}, wait for navigation`)
+        log.info(`${url} response status = ${status}, wait for navigation`)
         response = await page.waitForNavigation()
         status = response.status()
     }
+    log.info(`${url} response status = ${status}, return result`)
 
     return response
 
