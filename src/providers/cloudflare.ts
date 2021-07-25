@@ -35,8 +35,12 @@ export default async function resolveChallenge(
     }
     let status = response.status()
     while (status !== 200) {
+        if (!page || page?.isClosed()) {
+            throw new Error(`${url} No page or page is closed`)
+        }
+
         log.info(`${url} response status = ${status}, wait for navigation`)
-        await page.waitForTimeout(1000)
+        await page?.waitForTimeout(1000)
         status = response?.status()
         log.info(`${response?.url()} url after navigation, status = ${status}`)
     }
